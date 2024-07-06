@@ -1,0 +1,22 @@
+
+.agreement-container{
+    display:flex;
+    justify-content:center;
+}
+.property-details{
+    width:35%;
+}
+.agr-row div{
+    width:35%;
+    display:flex;
+    justify-content:space-between
+}
+.agr-row{
+    display:flex;
+    justify-content:space-between;
+    gap:2%;
+    margin-bottom:10px;
+}
+.agr-row h6{
+    font-weight:bold;
+}

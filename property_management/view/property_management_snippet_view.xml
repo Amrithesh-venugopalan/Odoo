@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="property_management_snippet" name="Property Management Snippet">
+        <section class="oe_structure container dynamic_snippet_blog">
+            <h1 class="h1 snippet-head">Latest Properties</h1>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center py-5">
+                        <div id="carousel">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="external_snippets" inherit_id="website.snippets" priority="8">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="property_management.property_management_snippet"/>
+        </xpath>
+    </template>
+</odoo>

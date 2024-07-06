@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_cart_form_view" model="ir.ui.view">
+        <field name="name">inherited.cart.form.view</field>
+        <field name="inherit_id" ref="website_sale.cart_lines"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='cart_products']" position="inside">
+                <a name="clear_website_order_lines" class="clear-website-order-line-btn btn btn-primary  w-100 clear-btn" type="object" role="button">Clear Cart</a>
+            </xpath>
+        </field>
+    </record>
+</odoo>

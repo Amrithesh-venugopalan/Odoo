@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="property_management_root" name="Property Management"/>
+    <menuitem id="first_level_configuration" name="Configuration" parent="property_management_root" sequence="1"/>
+    <menuitem id="first_level_management" name="Management" parent="property_management_root" sequence="0"/>
+    <menuitem id="second_level_properties" name='Properties' action="action_properties"
+              parent="first_level_configuration"/>
+    <menuitem id="second_level_properties_tag" name="Properties Tags" action="action_property_tags"
+              parent="first_level_configuration"/>
+    <menuitem id="second_level_orders" name="Agreements" action="action_orders" parent="first_level_management"/>
+    <menuitem id="first_level_reporting" name="Reporting" parent="property_management_root"/>
+    <menuitem id="second_level_reporting" name="Rent/Lease report" action="action_report_wizard"
+              parent="first_level_reporting"/>
+</odoo>
+
+

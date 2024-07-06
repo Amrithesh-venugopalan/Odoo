@@ -1,0 +1,15 @@
+card-img-top{
+    transition: transform 0.3s ease-in-out;
+}
+.card-img-top:hover{
+    transform:scale(1.2);
+}
+.img-container{
+    overflow:hidden;
+}
+.snippet-head{
+    margin:30px;
+}
+.card{
+    width:100%
+}

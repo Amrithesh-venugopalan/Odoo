@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="action_report_property_rent_lease_management" model="ir.actions.report">
+        <field name="name">Property Rent Lease Management Report</field>
+        <field name="model">property.rent.lease.management</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">property_management.report_management</field>
+        <field name="report_file">property_management.report_management</field>
+        <field name="binding_model_id" ref="model_property_rent_lease_management"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

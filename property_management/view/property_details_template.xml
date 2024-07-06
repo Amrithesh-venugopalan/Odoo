@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_details" name="Product Details">
+        <t t-call="website.layout">
+            <div class="page">
+                <div class="page-heading">
+                    <h3>Property Details</h3>
+                </div>
+                <div class="property-container">
+                    <div class="col-12 property-details">
+                        <t t-foreach="record" t-as="rec">
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Name</h6>
+                                    <span>:
+                                    </span>
+                                </div>
+                                <span t-attf-class="row-content" t-out="rec['name']"></span>
+                            </div>
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Country</h6>
+                                    <span>:
+                                    </span>
+                                </div>
+                                <span t-attf-class="row-content" t-out="rec['address_country_id']['name']"></span>
+                            </div>
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Rent Amount</h6>
+                                    <span>:
+                                    </span>
+                                </div>
+                                <span t-attf-class="row-content" t-out="rec['rent']"></span>
+                            </div>
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Lease Amount</h6>
+                                    <span>:
+                                    </span>
+                                </div>
+                                <span t-attf-class="row-content" t-out="rec['legal_amount']"></span>
+                            </div>
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Facilities</h6>
+                                    <span>:
+                                    </span>
+                                </div>
+                                <div class="facilities-container">
+                                    <t t-foreach="rec['property_facilities_ids']" t-as="facility">
+                                        <span t-attf-class="fac-item" t-out="facility['name']"/>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="prop-row">
+                                <div class="prop-head">
+                                    <h6>Built Date</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="row-content" t-out="rec['built_date']"></span>
+                            </div>
+                        </t>
+                    </div>
+                    <img class="property-details-image"
+                         alt="Image"
+                         t-attf-src="data:image/png;base64,{{rec['property_img']}}"
+                         style="padding: 0px; margin: 0px; height: 160px; width:305px;"/>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+

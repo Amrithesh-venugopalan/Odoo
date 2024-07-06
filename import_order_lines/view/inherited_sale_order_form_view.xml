@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_sale_order_form_view" model="ir.ui.view">
+        <field name="name">inherited.sale.order.form.view</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_import_sale_order_lines" string="Import Lines" type="object"
+                        context="{'default_sale_order_id':id}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

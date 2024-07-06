@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_res_user_form_view" model="ir.ui.view">
+        <field name="name">inherited.res.users.form.view</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='security']" position="after">
+                <page string="Commission">
+                    <group>
+                        <group>
+                            <field name="commission_plan_id"/>
+                        </group>
+                        <field name="all_commission_ids">
+                            <tree edit="1" editable="bottom">
+                                <field name="sale_order_id"/>
+                                <field name="user_commission_amount"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_product_product_rating_form_view" model="ir.ui.view">
+        <field name="name">inherited.product.product.rating.form.view</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='product_tag_ids']" position="after">
+                <field name="product_rating"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

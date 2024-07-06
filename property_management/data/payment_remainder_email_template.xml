@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="0">
+        <record id="payment_remainder_mail_template" model="mail.template">
+            <field name="name">Payment remainder template</field>
+            <field name="model_id" ref="property_management.model_property_rent_lease_management"/>
+            <field name="email_from">{{user.email}}</field>
+            <field name="email_to">{{object.tenant_id.email}}</field>
+            <field name="subject">Payment Pending</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Hello,
+                        <br/>
+                        <br/>
+                        Payment pending for your order <span style="font-weight:bold;" t-out="object.name"></span> amounting
+                        in
+                        <span t-out="object.tenant_currency_id.symbol"></span>
+                        <span style="font-weight:bold;" t-out="object.rent_lease_amount"
+                        >
+                        </span>
+                        <t>
+                             , agreement expires today !
+                            <br/>
+                            <br/>
+                            <br/>
+                        </t>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+
+</odoo>

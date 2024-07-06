@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_commission_plan,commission_plan,model_crm_commission,base.group_user,1,1,1,1
+access_commission_order_lines,commission_order_lines,model_commission_order_lines,base.group_user,1,1,1,1
+access_commission_amount_lines,commission_amount_lines,model_commission_amount_lines,base.group_user,1,1,1,1
+access_commission_team_amount_lines,commission_team_amount_lines,model_commission_team_amount_lines,base.group_user,1,1,1,1
+access_commission_product_order_lines,commission_product_order_lines,model_commission_product_order_lines,base.group_user,1,1,1,1

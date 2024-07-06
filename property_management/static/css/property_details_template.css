@@ -1,0 +1,46 @@
+
+
+.page-heading{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:30px;
+    margin-bottom:30px;
+    font-weight:bold;
+}
+.property-container{
+    display:flex;
+    justify-content:center;
+}
+.property-details{
+    width:35%;
+}
+.property-details-image{
+    width:50%;
+}
+.prop-row{
+    display:flex;
+    gap:2%;
+    margin-bottom:10px;
+}
+
+.prop-row row-content{
+    width:75%;
+}
+.facilities-container{
+    width:65%;
+}
+.prop-head{
+    display:flex;
+    justify-content:space-between;
+    width:35%
+}
+
+.fac-item{
+    padding:0px 5px;
+    background-color:lightblue;
+    border-radius:3px;
+}
+.snippet-icon{
+    font-size:50px;
+}

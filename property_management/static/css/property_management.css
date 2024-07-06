@@ -1,0 +1,83 @@
+.website-table{
+    margin-top:20px;
+    width:100%;
+}
+.text-center{
+    padding:10px
+}
+.table-heading{
+    margin-top:20px
+}
+.top-container{
+    display:flex;
+    justify-content:space-between;
+    width:90%;
+    align-items:center;
+}
+.select-type{
+    display:flex
+}
+.properties{
+    width: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.form-container{
+    margin-top:30px
+}
+.container{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.submit-button{
+    margin-top:30px
+}
+.rent-lease-record-body{
+    height:50vh;
+    overflow:scroll;
+}
+.two{
+    height:fit-content !important;
+    width:50% ;
+    border-radius:10px;
+    margin-top:20%;
+ }
+.modal-header{
+    margin:auto;
+}
+.input-container{
+    display:flex;
+    gap:20px
+}
+#modal-name-input,#modal-email-input{
+    width:100%;
+}
+.modal-body{
+    padding:3rem;
+}
+.input-label{
+    width:50px;
+}
+.container-row {
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.label-box {
+  display: flex;
+  justify-content: space-between;
+}
+
+.msg-box {
+  align-self: flex-end;
+  padding-right: 5px;
+  font-size: 12px;
+  color: red;
+}

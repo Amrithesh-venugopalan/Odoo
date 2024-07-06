@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_employee_form_view" model="ir.ui.view">
+        <field name="name">inherited.employee.form.view</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='hr_settings']" position="after">
+                <page name="employee_level" string="Employee Level">
+                    <group>
+                        <field name="employee_level_id"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="employee_salary"/>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <field name="highest_level" invisible="1"/>
+                <button name="action_promote_employee" string="Promote Employee" type="object" invisible="highest_level==True"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="property_management_template" name="Property Management">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <div class="container">
+                    <form enctype="multipart/form-data" class="o_mark_required"
+                          data-mark="*" data-model_name="" data-success-page="">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="s_website_form_rows row s_col_no_bgcolor property-management-container">
+                            <div class="top-container">
+                                <h3 class="table-heading">Rent Lease Records</h3>
+                                <div class="s_website_form_submit" data-name="Create Button">
+                                    <div style="width: 200px;" class="s_website_form_label"/>
+                                    <a href="/property_management/create" class="btn btn-primary" >New</a>
+                                </div>
+                            </div>
+                            <div class="rent-lease-record-body">
+                                <table class="website-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <span>Order Reference</span>
+                                            </th>
+                                            <th class="text-center">
+                                                <span>Start Date</span>
+                                            </th>
+                                            <th class="text-center">
+                                                <span>End Date</span>
+                                            </th>
+                                            <th class="text-center">
+                                                <span>Type</span>
+                                            </th>
+                                            <th class="text-center">
+                                                <span>Amount</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr t-foreach="records" t-as="record">
+                                            <td class="text-center"><a t-attf-href="/show_agreement/details/{{record.id}}"><t t-out="record['name']"/></a></td>
+                                            <td t-out="record['agreement_start_date']" class="text-center">
+                                            </td>
+                                            <td t-out="record['agreement_end_date']" class="text-center">
+                                            </td>
+                                            <td t-esc="dict(record._fields['agreement_type'].selection).get(record.agreement_type)" class="text-center">
+                                            </td>
+                                            <td t-out="record['rent_lease_amount']" class="text-center">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

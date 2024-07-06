@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_management">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="row">
+                        <div class="col-12" id="hash_config_review">
+                            <br/>
+                            <h3>Rent Lease Report</h3>
+                            <p>Date :
+                                <span t-out="date"/>
+                            </p>
+                            <br/>
+                            <br/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6 t-if="type">Agreement Type :
+                                <span t-out="rent_lease_records[0][0]"/>
+                            </h6>
+                            <h6 t-if="owner">Owner :
+                                <span t-out="owner"/>
+                            </h6>
+                            <h6 t-if="tenant">Tenant :
+                                <span t-out="tenant"/>
+                            </h6>
+                            <h6 t-if="state">State :
+                                <span t-out="state"/>
+                            </h6>
+                            <table class="table table-bordered" style="table-layout: fixed" id="hash_config_table">
+                                <thead style="display: table-row-group">
+                                    <tr>
+                                        <th>Order Reference</th>
+                                        <th>Property</th>
+                                        <th t-if="not type">Type</th>
+                                        <th t-if="not owner">Owner</th>
+                                        <th t-if="not tenant">Tenant</th>
+                                        <th t-if="not state">State</th>
+                                        <th>Agreement Start Date</th>
+                                        <th>Agreement End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="rent_lease_records" t-as="rec">
+                                        <tr>
+                                            <td>
+                                                <span t-esc="rec[8]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="rec[7]"/>
+                                            </td>
+                                            <td t-if="not type">
+                                                <span t-esc="rec[0]"/>
+                                            </td>
+                                            <td t-if="not owner">
+                                                <span t-esc="rec[5]"/>
+                                            </td>
+                                            <td t-if="not tenant">
+                                                <span t-esc="rec[6]"/>
+                                            </td>
+                                            <td t-if="not state">
+                                                <span t-esc="rec[1]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="rec[2]"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="rec[3]"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
+

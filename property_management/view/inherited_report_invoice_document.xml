@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="inherited_account_report_invoice" model="ir.ui.view">
+        <field name="name">inherited.account.report.invoice.view</field>
+        <field name="inherit_id" ref="account.report_invoice_document"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='informations']" position="inside">
+                <div t-attf-class="#{'col-auto col-3 mw-100' if report_type != 'html' else 'col'} mb-2"
+                     t-if="o.invoice_date_due and o.move_type == 'out_invoice' and o.state == 'posted'" name="due_date">
+                    <strong>Agreement Type:</strong>
+                    <br/>
+                    <span t-field="o.related_agreement_id.agreement_type">None</span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

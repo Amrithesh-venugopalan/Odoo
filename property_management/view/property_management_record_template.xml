@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="agreement_details" name="Agreement Details">
+        <t t-call="website.layout">
+            <div class="page">
+                <div class="page-heading">
+                    <h3>Agreement Details</h3>
+                </div>
+                <div class="agreement-container">
+                    <div class="col-12 property-details">
+                        <t t-foreach="record" t-as="rec">
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Agreement No</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['name']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Tenant</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['tenant_id']['name']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Agreement Type</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content"
+                                      t-out="dict(rec._fields['agreement_type'].selection).get(rec.agreement_type)"/>
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Amount</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['rent_lease_amount']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Start Date</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['agreement_start_date']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>End Date</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['agreement_end_date']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Total Days</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['total_days']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Company</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['company_id']['name']" />
+                            </div>
+                            <div class="agr-row">
+                                <div>
+                                    <h6>Agreement State</h6>
+                                    <span>:</span>
+                                </div>
+                                <span t-attf-class="agr-content" t-out="rec['agreement_state']"/>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
+

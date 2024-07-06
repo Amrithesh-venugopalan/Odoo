@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_orders" model="ir.actions.act_window">
+        <field name="name">Agreements</field>
+        <field name="res_model">property.rent.lease.management</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="tree_property_rent_lease_management" model="ir.ui.view">
+        <field name="name">tree.property.rent.lease.management</field>
+        <field name="model">property.rent.lease.management</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="tenant_id"/>
+                <field name="agreement_type"/>
+            </tree>
+        </field>
+    </record>
+    <record id="form_property_rent_lease_management" model="ir.ui.view">
+        <field name="name">Property</field>
+        <field name="model">property.rent.lease.management</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_property_invoice" string="Create Invoice" type="object"
+                            invisible="(show_invoice_button == False)"/>
+                    <button name="action_orders_draft" string="Draft" type="object"
+                            invisible="(agreement_state == 'draft')"/>
+                    <button name="action_confirmation_request" string="Request Confirmation" type="object"
+                            groups="property_management.group_property_user"
+                            invisible="(confirmation_request == True or agreement_state!='draft')"/>
+                    <button name="action_manager_agreement_approval" string="Approve" type="object"
+                            groups="property_management.group_property_manager"
+                            invisible="(manager_agreement_approval == True or confirmation_request == False)"/>
+                    <button name="action_orders_confirm" string="Confirm" type="object"
+                            invisible="((show_confirm_button==False and manager_agreement_approval==False) or agreement_state == 'confirmed' or agreement_state == 'closed' or agreement_state == 'expired' or agreement_state=='returned')"/>
+                    <button name="action_orders_close" string="Close" type="object"
+                            invisible="(agreement_state == 'draft' or agreement_state=='closed')"/>
+                    <button name="action_orders_return" string="Return" type="object"
+                            invisible="(agreement_state == 'draft' or agreement_state=='closed' or agreement_state=='returned' or agreement_state=='expired')"/>
+                    <button name="action_orders_expire" string="Expire" type="object"
+                            invisible="(agreement_state == 'draft' or agreement_state=='closed' or agreement_state=='returned' or agreement_state=='expired')"/>
+                    <field name="agreement_state" widget="statusbar"
+                           statusbar_visible="draft,confirmed,closed,returned,expired"
+                           options="{'clickable': False}"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button type="object" class="oe_stat_button" icon="fa-pencil-square-o"
+                                name="get_invoice_record">
+                            <field name="invoice_record_count" widget="statinfo" string="Invoices"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Not Paid" bg_color="text-bg-danger"
+                            invisible="(invoice_payment_state==False or invoice_payment_state=='in_payment' or invoice_payment_state=='paid' or invoice_payment_state=='partial' or invoice_payment_state=='reversed' or invoice_payment_state=='invoicing_legacy')"/>
+                    <widget name="web_ribbon" title="In Payment" bg_color="text-bg-danger"
+                            invisible="(invoice_payment_state==False or invoice_payment_state=='not_paid' or invoice_payment_state=='paid' or invoice_payment_state=='partial' or invoice_payment_state=='reversed' or invoice_payment_state=='invoicing_legacy')"/>
+                    <widget name="web_ribbon" title="Paid" bg_color="text-bg-danger"
+                            invisible="(invoice_payment_state==False or invoice_payment_state=='not_paid' or invoice_payment_state=='in_payment' or invoice_payment_state=='partial' or invoice_payment_state=='reversed' or invoice_payment_state=='invoicing_legacy')"/>
+                    <h1>
+                        <field options="{'line_breaks': True}" class="text-break"
+                               name="name" default_focus="1" placeholder="New"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <field name="show_confirm_button" invisible="1"/>
+                            <field name="invoice_payment_state" invisible="1" readonly="agreement_state != 'draft'"/>
+                            <field name="show_invoice_button" invisible="1" readonly="agreement_state != 'draft'"/>
+                            <field name="manager_agreement_approval" invisible="1"/>
+                            <field name="confirmation_request" invisible="1"/>
+                            <field name="tenant_id" readonly="agreement_state != 'draft'"/>
+                            <field name="agreement_type" readonly="agreement_state != 'draft'"/>
+                            <field name="rent_lease_amount" readonly="agreement_state != 'draft'"/>
+                        </group>
+                        <group>
+                            <field name="agreement_start_date" readonly="agreement_state != 'draft'"/>
+                            <field name="agreement_end_date" readonly="agreement_state != 'draft'"/>
+                            <field name="total_days" readonly="agreement_state != 'draft'"/>
+                            <field name="company_id" readonly="agreement_state != 'draft'"/>
+                            <field name="agreement_state" readonly="agreement_state != 'draft'"/>
+                        </group>
+                        <notebook>
+                            <page string="Properties">
+                                <field name="property_ids" readonly="agreement_state != 'draft'">
+                                    <tree edit="1" editable="bottom">
+                                        <field name="props_id"/>
+                                        <field name="prop_rent_amount"/>
+                                        <field name="prop_lease_amount"/>
+                                        <field name="address_country_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="rent_lease_search" model="ir.ui.view">
+        <field name="name">ir.property.rent.lease.management.search</field>
+        <field name="model">property.rent.lease.management</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter name="type_rent_filter" domain="[('agreement_type','=','rent')]" string="Rent"/>
+                <filter name="type_lease_filter" domain="[('agreement_type','=','lease')]" string="Lease"/>
+                <group>
+                    <filter string="Agreement Type" name="agreement_type_group_by"
+                            context="{'group_by':'agreement_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>
